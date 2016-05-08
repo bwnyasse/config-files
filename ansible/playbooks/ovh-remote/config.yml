@@ -1,0 +1,33 @@
+---
+- hosts: ovh-vps
+  remote_user: root
+  tasks:
+   - name: Add Nginx Repository
+     apt_repository: repo='ppa:nginx/stable' state=present
+     register: ppanginxstable
+
+   - name: Install Nginx
+     apt: pkg=nginx state=installed update_cache=true
+     when: ppanginxstable|success
+     register: nginxinstalled
+     notify:
+       - Start Nginx
+
+   - name: Enable https for apt
+     apt: pkg=apt-transport-https state=installed
+
+   - name: Setup Dart stable repository
+     script: dart_setup.sh
+
+   - name: Install Dart SDK
+     apt: pkg=dart state=installed update_cache=true
+
+   - name: Add git core PPA repository
+     apt_repository: repo='ppa:git-core/ppa'
+
+   - name: Install Git
+     apt: pkg=git state=latest update_cache=true
+
+  handlers:
+   - name: Start Nginx
+     service: name=nginx state=started
