@@ -10,6 +10,10 @@
   notify:
     - Start Nginx
 
+- name: Add Share log directory
+  when: nginxinstalled|success
+  file: dest=/usr/share/nginx/logs mode=775 state=directory
+
 - name: Add H5BP Config
   when: nginxinstalled|success
   copy: src=h5bp dest=/etc/nginx owner=root group=root
@@ -23,23 +27,23 @@
 - name: Add SFH Site Config
   when: nginxinstalled|success
   register: sfhconfig
-  template: src=default.com.j2 dest=/etc/nginx/sites-available/{{ '{{' }} domain {{ '}}'  }}.conf owner=root group=root
+  template: src=default.com.j2 dest=/etc/nginx/sites-available/{{ domain }}.conf owner=root group=root
 
   # Enable the virtual host configuration by symlinking it to the sites-enabled directory
 - name: Enable SFH Site Config
   when: sfhconfig|success
-  file: src=/etc/nginx/sites-available/{{ '{{' }} domain {{ '}}'  }}.conf dest=/etc/nginx/sites-enabled/{{ '{{' }} domain {{ '}}'  }}.conf state=link
+  file: src=/etc/nginx/sites-available/{{ domain }}.conf dest=/etc/nginx/sites-enabled/{{ domain }}.conf state=link
 
   # Create the web root
 - name: Create Web root
   when: nginxinstalled|success
-  file: dest=/var/www/{{ '{{' }} domain {{ '}}'  }}/public mode=775 state=directory owner=www-data group=www-data
+  file: dest=/var/www/{{ domain }}/public mode=775 state=directory owner=www-data group=www-data
   notify:
     - Reload Nginx
 
  # Change permission for the project root directory, which is one level above the web root created previously
 - name: Web Root Permissions
   when: nginxinstalled|success
-  file: dest=/var/www/{{ '{{' }} domain {{ '}}'  }} mode=775 state=directory owner=www-data group=www-data recurse=yes
+  file: dest=/var/www/{{ domain }} mode=775 state=directory owner=www-data group=www-data recurse=yes
   notify:
-    - Reload Nginx
+    - ReStart Nginx

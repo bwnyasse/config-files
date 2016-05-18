@@ -1,11 +1,6 @@
 server {
-    # Enforce the use of HTTPS
-    listen 80 default_server;
-    server_name *.{{ domain }};
-    return 301 https://{{ domain }}$request_uri;
-}
-
-server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
 
 	# SSL configuration
 	#
@@ -32,9 +27,6 @@ server {
 
 	include h5bp/basic.conf;
 
-	#ssl_certificate           {{ ssl_crt }};
-	#ssl_certificate_key       {{ ssl_key }};
-	#include h5bp/directive-only/ssl.conf;
 
 	location / {
 		# First attempt to serve request as file, then

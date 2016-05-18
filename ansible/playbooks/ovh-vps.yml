@@ -1,0 +1,4 @@
+---
+- hosts: ovh-vps
+  roles:
+    - nginx

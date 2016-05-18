@@ -4,3 +4,6 @@
 
 - name: Reload Nginx
   service: name=nginx state=reloaded
+
+- name: ReStart Nginx
+  service: name=nginx state=restarted
