@@ -1,0 +1,12 @@
+---
+- name: Add Bash Aliases
+  copy: src=.bash_aliases dest={{ ansible_env.HOME}} owner=root group=root
+
+- name: Add Bash Profiles
+  copy: src=.bash_profiles dest={{ ansible_env.HOME}} owner=root group=root
+
+- name: Add Bashrc
+  copy: src=.bashrc dest={{ ansible_env.HOME}} owner=root group=root
+
+- name: source bashrc
+  action: shell source {{ ansible_env.HOME}}/.bashrc

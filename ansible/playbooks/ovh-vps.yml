@@ -1,4 +1,5 @@
 ---
 - hosts: ovh-vps
   roles:
-    - nginx
+    #- nginx
+    - bashrc
