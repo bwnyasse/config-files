@@ -1,6 +1,6 @@
 ---
 - name: Add Bash Aliases
-  copy: src=.bash_aliases dest={{ ansible_env.HOME}}
+  template: src=.bash_aliases.j2 dest={{ ansible_env.HOME}}/.bash_aliases
 
 - name: Add Bash Profiles
   copy: src=.bash_profiles dest={{ ansible_env.HOME}}

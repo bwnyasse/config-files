@@ -1,0 +1,4 @@
+---
+ssh_pnschool_remote: ssh pnschool@91.121.143.111
+ssh_ovh_remote: ssh root@vps258232.ovh.net
+ssh_wicanplay_remote: ssh root@91.121.141.204
