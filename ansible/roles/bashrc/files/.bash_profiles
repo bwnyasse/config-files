@@ -32,6 +32,11 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platforms-tools
 export WICANPLAY_DOCKER_DB_BACKUP_DIR=/home/bwnyasse/work/project/wicanplay/mysql/data
 export WICANPLAY_DOCKER_DEPLOYMENT_DIR=/home/bwnyasse/work/wildfly/docker-deployments
 
+#Sootoop Docker Env Var
+export SOOTOOP_DOCKER_DEPLOYEMENT_DIR=/home/bwnyasse/work/tomcat/apache-tomcat-9.0.0.M6/webapps/ROOT/
+export SOOTOOP_DOCKER_DB_DATA_DIR=/home/bwnyasse/work/project/sootoop/mongo/data/
+export SOOTOOP_DOCKER_DB_BACKUP_DIR=/home/bwnyasse/work/project/sootoop/mongo/backup/
+
 ### Functions ----------------------------------------------------------------------------
 # Method to put ssh-key to a host server
 function push-ssh-key {
