@@ -1,6 +1,8 @@
 [ovh-vps]
-vps258232.ovh.net 
+vps258232.ovh.net
 
 [local-xubuntu]
-192.168.1.17
+localhost ansible_connection=local
 
+[local-xubuntu-as-remote]
+192.168.1.17

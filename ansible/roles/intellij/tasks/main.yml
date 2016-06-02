@@ -5,14 +5,10 @@
     msg: "{{ ansible_distribution_version }} is not an acceptable version of Ubuntu for this role"
   when: ansible_distribution_version|version_compare(16.04, '<')
 
-- name: Add Ubuntu Make Repository
-  apt_repository: repo='ppa:ubuntu-desktop/ubuntu-make' state=present
+- name: Add intellij-idea-community PPA Repository
+  apt_repository: repo='{{ intellij.ppa }}' state=present
   register: ppastable
 
-- name: Install Ubuntu Make
-  apt: pkg=ubuntu-make state=installed update_cache=true
+- name: Install intellij-idea-community
+  apt: pkg=intellij-idea-community state=installed update_cache=true
   when: ppastable|success
-  register: umakeinstalled
-
-- name: Setup Intellij Idea by Ubuntu Make
-  script: u_make_idea.sh

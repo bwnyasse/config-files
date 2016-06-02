@@ -1,6 +1,6 @@
 ---
 - hosts: local-xubuntu
   roles:
-    #- bashrc
-    #- gitkraken
-    - intellij
+    - { role: "../roles/bashrc" }
+    #- { role: "../roles/gitkraken" }
+    - { role: "../roles/intellij" }

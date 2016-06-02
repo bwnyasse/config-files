@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Get the Google Linux package signing key.
 sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
 # Set up the location of the stable repository.
