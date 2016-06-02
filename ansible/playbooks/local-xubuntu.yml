@@ -1,5 +1,6 @@
 ---
 - hosts: local-xubuntu
   roles:
-    - bashrc
-    - gitkraken
+    #- bashrc
+    #- gitkraken
+    - intellij
