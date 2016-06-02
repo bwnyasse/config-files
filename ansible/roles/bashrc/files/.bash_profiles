@@ -42,8 +42,3 @@ export SOOTOOP_DOCKER_DB_BACKUP_DIR=/home/bwnyasse/work/project/sootoop/mongo/ba
 function push-ssh-key {
   ssh $1 "echo '`cat ~/.ssh/id_rsa.pub`' >> ~/.ssh/authorized_keys"
 }
-
-
-### Command
-# Enable Tmux
-[[ $TERM != "screen" ]] && exec tmux
