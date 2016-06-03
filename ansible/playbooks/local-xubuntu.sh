@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-ansible-playbook --ask-vault-pass -vvvv -i ../servers/hosts -s  \
-    -u bwnyasse -k --ask-sudo-pass local-xubuntu.yml
+ansible-playbook --vault-password-file=~/.ansible_pwd -vvvv -i ../servers/hosts \
+    -u bwnyasse local-xubuntu.yml

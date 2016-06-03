@@ -1,0 +1,10 @@
+---
+- name: Checkout fzf from git repo
+  git: repo=https://github.com/junegunn/fzf.git
+       dest={{ ansible_env.HOME }}/.fzf
+
+- name: Install fzf
+  script: ~/.fzf/install --all
+
+- name: override fzf bash to ensure used of user.home dir
+  template: src=.fzf.bash dest={{ ansible_env.HOME }}

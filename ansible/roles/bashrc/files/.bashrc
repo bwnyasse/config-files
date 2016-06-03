@@ -94,3 +94,7 @@ fi
 if [ -f ~/.bash_profiles ]; then
     . ~/.bash_profiles
 fi
+
+if [ -f ~/.fzf.bash ]; then
+    . ~/.fzf.bash
+fi

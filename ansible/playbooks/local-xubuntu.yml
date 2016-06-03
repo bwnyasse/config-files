@@ -1,6 +1,7 @@
 ---
 - hosts: local-xubuntu
   roles:
+    - { role: "../roles/fzf" }
     - { role: "../roles/bashrc" }
     #- { role: "../roles/gitkraken" }
-    - { role: "../roles/intellij" }
+    #- { role: "../roles/intellij" }
