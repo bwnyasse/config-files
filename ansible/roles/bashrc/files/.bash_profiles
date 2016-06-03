@@ -36,6 +36,7 @@ export WICANPLAY_DOCKER_DEPLOYMENT_DIR=/home/bwnyasse/work/wildfly/docker-deploy
 export SOOTOOP_DOCKER_DEPLOYEMENT_DIR=/home/bwnyasse/work/tomcat/apache-tomcat-9.0.0.M6/webapps/ROOT/
 export SOOTOOP_DOCKER_DB_DATA_DIR=/home/bwnyasse/work/project/sootoop/mongo/data/
 export SOOTOOP_DOCKER_DB_BACKUP_DIR=/home/bwnyasse/work/project/sootoop/mongo/backup/
+export SOOTOOP_DOCKER_NGINX_CONF_FILE=/home/bwnyasse/work/project/sootoop/sootoop-configuration-files/docker/volumes/nginx/default.conf
 
 ### Functions ----------------------------------------------------------------------------
 # Method to put ssh-key to a host server
