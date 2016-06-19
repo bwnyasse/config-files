@@ -20,6 +20,7 @@ usage() {
 	EOF
 }
 
+
 # Install a package according to a given command sequence.
 # $1: package name
 install() {
@@ -38,7 +39,6 @@ install() {
 
 # Read the input param
 option="${1}"
-
 case $option in
 	-h|help)
 		usage
@@ -53,7 +53,7 @@ is_pkg_installed=$(dpkg-query -W -f='${Status}' $option 2>/dev/null | grep -c "o
 if [ $is_pkg_installed -eq 0 ];
 then
     echo " $option is not installed , trying to install it... "
-    install $option
+    instal $option
 else
     echo  " The required $option package is installed , nothing to do -:) "
 fi

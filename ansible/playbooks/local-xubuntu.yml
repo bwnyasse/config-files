@@ -3,5 +3,6 @@
   roles:
     - { role: "../roles/fzf" }
     - { role: "../roles/bashrc" }
+    - { role: "../roles/scribus" }
     #- { role: "../roles/gitkraken" }
     #- { role: "../roles/intellij" }
