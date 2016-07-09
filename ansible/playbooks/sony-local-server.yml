@@ -1,0 +1,5 @@
+---
+- hosts: sony-local-ubuntu-server
+  roles:
+    - { role: "../roles/fzf" }
+    - { role: "../roles/docker" }
