@@ -1,0 +1,8 @@
+---
+- name: Untar archive for maven color
+  become: yes
+  unarchive: src=maven-color-log4j2-1.5.0-bundle.tar.gz dest={{ mvn.home }}
+
+- name: Delete slf4j-simple lib
+  become: yes
+  file: path={{ mvn.home }}/lib/slf4j-simple-1.7.*.jar state=absent
