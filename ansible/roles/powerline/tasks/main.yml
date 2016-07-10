@@ -1,0 +1,61 @@
+---
+- name: install packages
+  become: yes
+  apt: name=powerline state=present
+  tags: powerline
+
+- name: Create .fonts directory
+  file: path={{ ansible_env.HOME }}/.fonts state=directory mode=0755
+
+- name: Copy power line font
+  copy: src=fonts/PowerlineSymbols.otf dest="{{ ansible_env.HOME }}/.fonts/PowerlineSymbols.otf"
+  tags: powerline
+
+- name: Regenerating font cache
+  command: fc-cache -vf ~/.fonts/
+  tags: powerline
+
+- name: Create fontconfig directory
+  file: path="{{ ansible_env.HOME }}/.config/fontconfig/conf.d/" state=directory
+  tags: powerline
+
+- name: Get and install fontconfig file
+  copy: src=conf/10-powerline-symbols.conf dest="{{ ansible_env.HOME }}/.config/fontconfig/conf.d/10-powerline-symbols.conf"
+  tags: powerline
+
+- name: Create local configuration directories
+  file: path="{{ item }}" state=directory
+  with_items:
+    - "{{ ansible_env.HOME }}/.config/powerline/themes/shell"
+    - "{{ ansible_env.HOME }}/.config/powerline/colorschemes"
+  tags:
+    - powerline
+    - fast
+
+- name: Install powerline-gitstatus segment
+  pip: name=powerline-gitstatus version=v1.2.1
+  become: yes
+  tags: powerline
+
+- name: Copy themes
+  become: yes
+  copy: src=themes/shell/default.json dest="/usr/share/powerline/config_files/themes/shell/"
+  tags:
+    - powerline
+    - fast
+
+- name: Copy colorschemes
+  become: yes
+  copy: src=colorschemes/shell/default.json dest="/usr/share/powerline/config_files/colorschemes/shell"
+  tags:
+    - powerline
+    - fast
+
+- name: Add PowerLine Bash config
+  copy: src=conf/.powerline.bash dest={{ ansible_env.HOME}}
+
+- name: source bashrc
+  shell: source {{ ansible_env.HOME}}/.bashrc
+  args:
+    executable: /bin/bash
+

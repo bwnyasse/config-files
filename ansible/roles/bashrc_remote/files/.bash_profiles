@@ -1,0 +1,5 @@
+### Functions ----------------------------------------------------------------------------
+# Method to put ssh-key to a host server
+function push-ssh-key {
+  ssh $1 "echo '`cat ~/.ssh/id_rsa.pub`' >> ~/.ssh/authorized_keys"
+}

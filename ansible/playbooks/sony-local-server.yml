@@ -2,4 +2,6 @@
 - hosts: sony-local-ubuntu-server
   roles:
     - { role: "../roles/fzf" }
-    - { role: "../roles/docker" }
+    - { role: "../roles/bashrc_remote" }
+    - { role: "../roles/powerline" }
+    #- { role: "../roles/docker" }

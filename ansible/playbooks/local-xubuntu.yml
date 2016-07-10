@@ -1,8 +1,8 @@
 ---
 - hosts: local-xubuntu
   roles:
-    - { role: "../roles/fzf" }
+   # - { role: "../roles/fzf" }
     - { role: "../roles/bashrc" }
-    - { role: "../roles/scribus" }
+    - { role: "../roles/powerline" }
     #- { role: "../roles/gitkraken" }
     #- { role: "../roles/intellij" }

@@ -1,0 +1,14 @@
+---
+- name: Add Bash Aliases
+  template: src=.bash_aliases.j2 dest={{ ansible_env.HOME}}/.bash_aliases
+
+- name: Add Bash Profiles
+  copy: src=.bash_profiles dest={{ ansible_env.HOME}}
+
+- name: Add Bashrc
+  copy: src=.bashrc dest={{ ansible_env.HOME}}
+
+- name: source bashrc
+  shell: source {{ ansible_env.HOME}}/.bashrc
+  args:
+    executable: /bin/bash
