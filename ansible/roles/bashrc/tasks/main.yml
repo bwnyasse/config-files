@@ -5,6 +5,9 @@
 - name: Add Bash Profiles
   copy: src=.bash_profiles dest={{ ansible_env.HOME}}
 
+- name: Add My Docker Bash
+  copy: src=.my_docker.bash dest={{ ansible_env.HOME}}
+
 - name: Add Bashrc
   copy: src=.bashrc dest={{ ansible_env.HOME}}
 

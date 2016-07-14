@@ -31,12 +31,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 #DOCKER
-alias d='docker'
-alias dc='docker-compose'
-alias dm='docker-machine'
-alias dcnet='docker-compose'
-alias removeDanglingImage='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
-alias removeExitedContainer='docker rm $(docker ps -aq)'
+
 
 # alias sony-remote
 alias sony-remote='ssh bwnyasse@sony-local-ubuntu-server'

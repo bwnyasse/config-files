@@ -102,3 +102,7 @@ fi
 if [ -f ~/.powerline.bash ]; then
     . ~/.powerline.bash
 fi
+
+if [ -f ~/.my_docker.bash ]; then
+    . ~/.my_docker.bash
+fi
