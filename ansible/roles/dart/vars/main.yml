@@ -1,0 +1,12 @@
+---
+# defaults file for dart
+dart_signing_key_url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+dart_source_list_url: https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list
+dart_source_list_path: /etc/apt/sources.list.d/dart_stable.list
+dart_dir: /usr/lib/dart/bin
+dart_package: dart
+
+dartium_include: yes
+dartium_archive_name: dartium-linux-x64-release
+dartium_path: /opt/google/dartium
+dartium_url: https://storage.googleapis.com/dart-archive/channels/stable/release/latest/dartium/{{dartium_archive_name}}.zip
