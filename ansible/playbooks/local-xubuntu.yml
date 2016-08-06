@@ -2,8 +2,8 @@
 - hosts: local-xubuntu
   roles:
    # - { role: "../roles/fzf" }
-    #- { role: "../roles/bashrc" }
-    - { role: "../roles/dart", when: ansible_os_family == "Debian"}
+    - { role: "../roles/docker" }
+   # - { role: "../roles/dart", when: ansible_os_family == "Debian"}
     #- { role: "../roles/powerline" }
     #- { role: "../roles/maven_color" }
     #- { role: "../roles/gitkraken" }

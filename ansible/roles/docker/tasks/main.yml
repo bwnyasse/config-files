@@ -23,12 +23,14 @@
     state: present
 
 - name: Add Docker repository and update apt cache
+  become: yes
   apt_repository:
     repo: "{{ apt_repository }}"
     update_cache: yes
     state: present
 
 - name: Install (or update) docker package
+  become: yes
   apt:
     name: "{{ docker_pkg_name }}"
     state: "{{ 'latest' if update_docker_package else 'present' }}"
@@ -36,6 +38,7 @@
     cache_valid_time: "{{ docker_apt_cache_valid_time }}"
 
 - name: Set docker daemon options
+  become: yes
   copy:
     content: "DOCKER_OPTS=\"{{ docker_opts.rstrip('\n') }}\""
     dest: /etc/default/docker
@@ -47,6 +50,7 @@
   when: docker_opts != "" and ansible_distribution_version|version_compare(15.04, '<')
 
 - name: Create systemd configuration directory for Docker service (systemd)
+  become: yes
   file:
     dest: /etc/systemd/system/docker.service.d
     state: directory
@@ -56,6 +60,7 @@
   when: docker_opts != "" and ansible_distribution_version|version_compare(15.04, '>=')
 
 - name: Set docker daemon options (systemd)
+  become: yes
   copy:
     content: |
       [Service]
@@ -70,6 +75,7 @@
   when: docker_opts != "" and ansible_distribution_version|version_compare(15.04, '>=')
 
 - name: Ensure docker daemon options used (systemd)
+  become: yes
   template:
     src: docker.conf
     dest: /etc/systemd/system/docker.service.d/docker.conf
@@ -79,6 +85,7 @@
   when: docker_opts != "" and ansible_distribution_version|version_compare(15.04, '>=')
 
 - name: Fix DNS in docker.io
+  become: yes
   lineinfile:
     dest: "{{ docker_defaults_file_path }}"
     regexp: "DOCKER_OPTS="
@@ -96,6 +103,7 @@
 
 # We must install pip via apt before we can use the pip module below
 - name: Install pip, python-dev package with apt
+  become: yes
   apt:
     pkg: "{{ item }}"
     state: latest
@@ -108,6 +116,7 @@
 # Upgrade pip with pip to fix angstwad/docker.ubuntu/pull/35 and docker-py/issues/525
 # Install latest version when no specific release is set.
 - name: Upgrade latest pip, setuptools, docker-py and docker-compose with pip
+  become: yes
   pip:
     name: "{{ item.name }}"
     state: latest
@@ -121,6 +130,7 @@
 
 # Install specific version when set in the variables
 - name: Install specific pip, setuptools, docker-py and docker-compose with pip
+  become: yes
   pip:
     name: "{{ item.name }}"
     state: present
@@ -133,11 +143,13 @@
   when: (item.version!="latest" and item.install)
 
 - name: Check if /etc/updatedb.conf exists
+  become: yes
   stat:
     path: /etc/updatedb.conf
   register: updatedb_conf_exists
 
 - name: Ensure updatedb does not index /var/lib/docker
+  become: yes
   lineinfile:
     dest: /etc/updatedb.conf
     state: present
@@ -147,11 +159,13 @@
   when: updatedb_conf_exists.stat.exists
 
 - name: Check if /etc/default/ufw exists
+  become: yes
   stat:
     path: /etc/default/ufw
   register: ufw_default_exists
 
 - name: Change ufw default forward policy from drop to accept
+  become: yes
   lineinfile:
     dest: /etc/default/ufw
     regexp: "^DEFAULT_FORWARD_POLICY="
@@ -159,17 +173,20 @@
   when: ufw_default_exists.stat.exists
 
 - name: Start docker
+  become: yes
   service:
     name: docker
     state: started
   when: docker_pkg_name.find('lxc-docker') != -1 or docker_pkg_name.find('docker-engine') != -1
 
 - name: Start docker.io
+  become: yes
   service:
     name: docker.io
     state: started
   when: docker_pkg_name == 'docker.io'
 
 - name: update facts if docker0 is not defined
+  become: yes
   action: setup
   when: ansible_docker0 is not defined
