@@ -1,0 +1,6 @@
+---
+- name: Install Virtual Box
+  become: yes
+  apt: name={{item}} update_cache=yes state=present
+  with_items:
+    - "{{virutalbox_package}}"
