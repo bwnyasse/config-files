@@ -1,0 +1,4 @@
+---
+
+- name: Uninstall current docker installation
+  script: uninstall.sh
