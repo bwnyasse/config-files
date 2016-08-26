@@ -5,24 +5,32 @@ alias dc='docker-compose'
 alias dm='docker-machine'
 
 removeExitedContainer() {
+  # Clean up exited container
    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
-}
-
-removeDanglingImages() {
-  # Clean up exited container and dangling images
-    removeExitedContainer
+   docker rm -v $(docker ps --filter status=created -q 2>/dev/null) 2>/dev/null
+   # Remove Dangling images
    docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
 }
 
-removeOldImages() {
-    removeDanglingImages
+removeDanglingVolumes() {
+    docker volume ls -qf dangling=true | xargs -r docker volume rm
+}
+
+dockerRemoveOldImages() {
+    removeExitedContainer
+    removeDanglingVolumes
 
    # removes old from months and week
    docker images | grep 'months ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
    docker images | grep 'weeks ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
 }
 
-dockerCleanEverything() {
+removeRunningContainer() {
+   docker stop $(docker ps -aq)
+   removeExitedContainer
+}
+
+removeResetHeard() {
     # Delete all containers
     docker rm $(docker ps -a -q)
     # Delete all images

@@ -25,6 +25,11 @@ dockerRemoveOldImages() {
    docker images | grep 'weeks ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
 }
 
+removeRunningContainer() {
+   docker stop $(docker ps -aq)
+   removeExitedContainer
+}
+
 removeResetHeard() {
     # Delete all containers
     docker rm $(docker ps -a -q)
