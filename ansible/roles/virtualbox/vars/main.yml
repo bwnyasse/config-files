@@ -1,1 +1,2 @@
-virutalbox_package: virtualbox
+virtualbox_package: virtualbox
+virtualbox_guest_additions: virtualbox-guest-additions-iso

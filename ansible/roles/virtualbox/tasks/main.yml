@@ -3,4 +3,10 @@
   become: yes
   apt: name={{item}} update_cache=yes state=present
   with_items:
-    - "{{virutalbox_package}}"
+    - "{{virtualbox_package}}"
+
+- name: Install Guest Additions
+  become: yes
+  apt: name={{item}} update_cache=yes state=present
+  with_items:
+    - "{{virtualbox_guest_additions}}"
