@@ -6,8 +6,13 @@
 
 #### Ping Host
 
-    ansible all -m ping -i $INVENTORY_FILE  -u $USER
+      ansible all -m ping -i $INVENTORY_FILE  -u $USER
 
 #### Running playbook
 
     ansible-playbook -v -i $INVENTORY_FILE -s -u $USER  $PLAYBOOK_FILE
+
+#### Ensure pyhton for the guests
+
+    sudo apt-get install python-simplejson && \
+    sudo apt-get install python-pip
