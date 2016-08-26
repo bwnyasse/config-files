@@ -4,4 +4,4 @@
     - { role: "../roles/fzf" }
     - { role: "../roles/bashrc_remote" }
     - { role: "../roles/powerline" }
-    #- { role: "../roles/docker" }
+    - { role: "../roles/docker" }

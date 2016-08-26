@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-ansible-playbook --ask-vault-pass -v -i ../servers/hosts -u root ovh-vps.yml
+ansible-playbook --vault-password-file=~/.ansible_pwd -vvvv -i ../servers/hosts  \
+    -K -u bwnyasse ovh-vps.yml
