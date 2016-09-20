@@ -1,0 +1,26 @@
+---
+# tasks file for oh-my-zsh
+- apt: name={{ item }}
+  when: ansible_pkg_mgr == 'apt'
+  become: yes
+  with_items:
+    - zsh
+    - git
+  notify: clean apt cache
+
+- yum: name={{ item }}
+  when: ansible_pkg_mgr == 'yum'
+  become: yes
+  with_items:
+    - zsh
+    - git
+  notify: clean yum cache
+
+- git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh accept_hostkey=true update=no
+
+- template: src=.zshrc.j2 dest=~/.zshrc backup=yes
+  become: true
+  become_user: "{{ ohmyzsh_user }}"
+
+- user: name={{ ohmyzsh_user }} shell=/bin/zsh
+  become: true

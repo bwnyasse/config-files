@@ -1,0 +1,4 @@
+---
+- name: Checkout powerlevel9k from git repo
+  git: repo=https://github.com/bhilburn/powerlevel9k.git
+       dest={{ ansible_env.HOME }}/{{ powerlevel_path }}

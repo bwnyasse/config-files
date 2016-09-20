@@ -1,0 +1,12 @@
+---
+# handlers file for oh-my-zsh
+
+  - name: clean apt cache
+    shell: apt-get -y autoremove && apt-get -y autoclean
+    when: ansible_pkg_mgr == 'apt'
+    become: yes
+
+  - name: clean yum cache
+    shell: yum -y clean all
+    when: ansible_pkg_mgr == 'yum'
+    become: yes

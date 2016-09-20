@@ -8,3 +8,6 @@
 
 - name: override fzf bash to ensure used of user.home dir
   template: src=.fzf.bash dest={{ ansible_env.HOME }}
+
+- name: override fzf zsh to ensure used of user.home dir
+  template: src=.fzf.zsh dest={{ ansible_env.HOME }}  

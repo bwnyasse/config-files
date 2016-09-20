@@ -1,8 +1,10 @@
 ---
 - hosts: local-xubuntu
   roles:
-   # - { role: "../roles/fzf" }
+    - { role: "../roles/fzf" }
     - { role: "../roles/bashrc" }
+    - { role: ../roles/powerlevel9k }
+    - { role: ../roles/mashimom.oh-my-zsh, ohmyzsh_theme: "powerlevel9k/powerlevel9k" }
    # - { role: "../roles/dart", when: ansible_os_family == "Debian"}
     #- { role: "../roles/powerline" }
     #- { role: "../roles/maven_color" }

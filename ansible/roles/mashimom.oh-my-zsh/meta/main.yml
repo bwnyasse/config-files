@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: Marco Shimomoto
+  description: Ansible role to install and configure oh-my-zsh on both APT and YUM based distros.
+  license: license MIT
+  min_ansible_version: 1.9
+  platforms:
+  - name: EL
+    versions:
+     - all
+  - name: Fedora
+    versions:
+     - all
+  - name: Ubuntu
+    versions:
+     - all
+  - name: Debian
+    versions:
+     - all
+  categories:
+  - development
+dependencies: []
