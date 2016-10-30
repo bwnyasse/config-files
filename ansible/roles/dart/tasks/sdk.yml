@@ -4,8 +4,8 @@
   with_items:
     - apt-transport-https
 
-- name: Setup Dart stable repository
-  script: dart_setup.sh
+# - name: Setup Dart stable repository
+#   script: dart_setup.sh
 
 - name: Install Dart SDK
   become: yes

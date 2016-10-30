@@ -11,4 +11,4 @@ localhost ansible_connection=local
 192.168.1.17
 
 [sony-local-ubuntu-server]
-sony-local-ubuntu-server
+192.168.1.19

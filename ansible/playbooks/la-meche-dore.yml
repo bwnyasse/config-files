@@ -1,7 +1,11 @@
 ---
-- hosts: ovh-vps
+- hosts: la-meche-dore
+#  gather_facts: no
+#  pre_tasks:
+#    - raw: sudo apt-get -y install python-simplejson
+
   roles:
     - { role: "../roles/fzf" }
     - { role: "../roles/bashrc_remote" }
-    - { role: "../roles/powerline" }
+    #- { role: "../roles/powerline" }
     - { role: "../roles/docker" }
