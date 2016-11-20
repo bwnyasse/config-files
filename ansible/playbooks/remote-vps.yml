@@ -1,5 +1,5 @@
 ---
-- hosts: ovh-vps
+- hosts: remote-vps
   roles:
     - { role: "../roles/fzf" }
     - { role: "../roles/bashrc_remote" }
