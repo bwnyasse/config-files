@@ -4,6 +4,7 @@ vps324814.ovh.net
 [remote-vps]
 vmi92598.contabo.host
 vps311007.ovh.net
+vps343264.ovh.net
 
 [local-xubuntu]
 localhost ansible_connection=local

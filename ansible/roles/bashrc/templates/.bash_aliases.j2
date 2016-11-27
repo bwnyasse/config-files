@@ -34,10 +34,11 @@ alias l='ls -CF'
 ### GO To Nodes
 #######################################################
 
-alias go-lameche-dore='ssh bwnyasse@vps324814.ovh.net'
-alias go-lameche-dore-as-root='ssh root@vps324814.ovh.net'
-alias go-contabo-vps='ssh bwnyasse@vmi92598.contabo.host'
+alias go-lameche-dore='ssh bwnyasse@{{ lamechedore }}'
+alias go-lameche-dore-as-root='ssh root@{{ lamechedore }}'
+alias go-contabo-vps='ssh bwnyasse@{{ contabo_remote }}'
 alias go-sony-remote='ssh bwnyasse@192.168.1.19'
-alias go-pnschool-remote='{{ ssh_pnschool_remote }}'
-alias go-ovh-remote='{{ ssh_ovh_remote }}'
-alias go-wicanplay-remote='{{ ssh_wicanplay_remote }}'
+alias go-pnschool-remote='ssh pnschool@{{ pnschool_remote }}'
+alias go-ovh-remote-1='ssh bwnyasse@{{ ovh_remote_1 }}'
+alias go-ovh-remote-2='ssh bwnyasse@{{ ovh_remote_2 }}'
+alias go-wicanplay-remote='ssh root@{{ wicanplay_remote }}'
