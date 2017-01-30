@@ -3,6 +3,7 @@
 alias d='docker'
 alias dc='docker-compose'
 alias dm='docker-machine'
+alias dprune='docker system prune'
 
 function removeExitedContainer {
   # Clean up exited container
