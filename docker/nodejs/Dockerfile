@@ -9,3 +9,7 @@ RUN cd ~ && \
     bash nodesource_setup.sh && \
     apt-get install -y nodejs && \
     apt-get install -y build-essential
+
+
+VOLUME /src
+WORKDIR /src
