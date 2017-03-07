@@ -13,3 +13,5 @@ sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/da
 apt-get update && \
 # Installing Dart
 apt-get install dart
+
+ENV PATH="/usr/lib/dart/bin:${PATH}"
