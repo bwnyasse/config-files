@@ -6,6 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
   apt-get update && \
-  apt-get install -y software-properties-common curl git htop man wget make python g++
+  apt-get install -y software-properties-common curl git htop man wget make python g++ vim
 
 CMD ["bash"]
