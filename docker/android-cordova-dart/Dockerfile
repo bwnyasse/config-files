@@ -16,3 +16,5 @@ apt-get install dart
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
 
+ADD repo-key /
+
