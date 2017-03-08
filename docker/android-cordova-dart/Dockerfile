@@ -16,4 +16,3 @@ apt-get install dart
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
 
-COPY known_hosts /root/.ssh/known_hosts
