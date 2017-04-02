@@ -42,3 +42,6 @@ alias go-pnschool-remote='ssh pnschool@{{ pnschool_remote }}'
 alias go-ovh-remote-1='ssh bwnyasse@{{ ovh_remote_1 }}'
 alias go-ovh-remote-2='ssh bwnyasse@{{ ovh_remote_2 }}'
 alias go-wicanplay-remote='ssh root@{{ wicanplay_remote }}'
+
+### TUNEL 
+alias tunel-ovh-remote-1='ssh -D 8213 -f -C -q -N bwnyasse@{{ ovh_remote_1 }}'
