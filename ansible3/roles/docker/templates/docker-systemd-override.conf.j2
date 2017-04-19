@@ -1,0 +1,4 @@
+[Service]
+Environment=
+ExecStart=
+ExecStart=/usr/bin/docker daemon -H unix:///var/run/docker.sock {{ docker_options | default("") }}

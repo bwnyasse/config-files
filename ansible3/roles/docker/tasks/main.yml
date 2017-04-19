@@ -1,0 +1,45 @@
+---
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Install Docker.
+  package: name={{ docker_package }} state=present
+  become: yes
+
+- name: Add main user to dockerroot group
+  user:
+    name: "{{ user.name }}"
+    groups: "{{ docker_group }}"
+    append: yes
+  when:
+    - add_user_to_docker_group == "true"
+    
+- name: Ensure Docker is started and enabled at boot.
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Install Docker Compose (if configured).
+  get_url:
+    url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+  when: docker_install_compose
+
+- name: Create docker systemd service override directory
+  file:
+    path: /etc/systemd/system/docker.service.d/
+    state: directory
+    owner: root
+    group: root
+
+- name: Add docker systemd service override configuration file
+  template:
+    src: docker-systemd-override.conf.j2
+    dest: /etc/systemd/system/docker.service.d/override.conf
+    owner: root
+    group: root
+  become: yes
+  notify:
+   - restart docker

@@ -1,0 +1,51 @@
+---
+# ################################################
+# Configuration de zsh
+#
+# @description : ces tasks permettant de configurer et installer ZSH pour le user definir par la variable user.name.
+#
+# @parameters :
+#   - configure_zsh : declarer cette variable a 'false' s'il n'y a pas besoin de configurer zsh
+#
+# ################################################
+
+- name: Set default shell to zsh
+  user:
+    name: "{{ user.name }}"
+    shell: /usr/bin/zsh
+    state: present
+  become: yes
+
+- name: Install oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: "{{ user.home }}/.oh-my-zsh"
+    update: yes
+    force: yes
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Set common zsh theme
+  copy:
+    src: zsh/pure.zsh-theme
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    dest: "{{ user.home }}/.oh-my-zsh/themes/pure.zsh-theme"
+    mode: 0644
+
+- name: Set common .zshrc
+  template:
+    src: zsh/zshrc
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    dest: "{{ user.home }}/.zshrc"
+    mode: 0644
+
+- name: Chown to "{{ user.name }}"
+  file:
+    path: "{{ user.home }}/{{ item.path }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    recurse: "{{ item.recurse }}"
+  with_items:
+    - { path: '.zshrc', recurse: no }

@@ -1,0 +1,9 @@
+---
+# ################################################
+#
+# Variables par défaut pour le rôle common
+#
+# ################################################
+configure_zsh: true
+configure_git: false
+sudo_group: root

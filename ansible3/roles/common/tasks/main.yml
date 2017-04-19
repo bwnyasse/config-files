@@ -1,0 +1,71 @@
+---
+# ################################################
+#
+# Rôle commun à tous les environnements.
+#
+# @description : Ce rôle permet d'installer les packages de base nécessaires sur un host.
+# Il le configure également pour avoir accès aux mêmes fonctionnalités et alias.
+#
+# ################################################
+
+# ################################################
+# Check que les variables obligatoires sont renseignées :
+# ################################################
+- assert: { that: "user.name != ''" }
+- assert: { that: "user.password != ''" }
+- assert: { that: "user.home != ''" }
+# ################################################
+
+
+# ################################################
+# Configuration de l'utilisateur principal
+#
+# Note : Le role common rend obligatoire l'utilisation d'un utilisateur principal autre que celui utilisé pour se
+# connecter via ssh à la machine à provisionner.
+# Cet utilisateur est créé avec les droits sudo directement. Si le cas se présente, on peut rendre paramétrable le fait
+# de rendre ce user sudo ou non.
+# ################################################
+
+- name: Create group sudo
+  group:
+    name: "{{ sudo_group | mandatory }}"
+    state: present
+    system: yes
+
+- name: Create and configure main user {{ user.name }}
+  become: yes
+  user:
+    name: "{{ user.name }}"
+    home: "{{ user.home }}"
+    password: "{{ user.password }}"
+    groups: "{{ sudo_group | mandatory }}"
+    state: present
+    append: yes
+    createhome: yes
+    generate_ssh_key: yes
+    shell: /bin/zsh
+
+- name: Set correct permissions to home directory
+  file:
+     path: "{{ user.home }}"
+     owner: "{{ user.name }}"
+     group: "{{ user.name }}"
+     mode: 0755
+     state: "directory"
+  become: yes
+
+# ################################################
+# Configuration de zsh
+# ################################################
+- name: Configure zsh
+  include: configure-zsh.yml
+  tags: configure-zsh
+  when: configure_zsh == True
+
+# ################################################
+# Configuration de git
+# ################################################
+- name: Configure git (global config)
+  include: configure-git.yml
+  tags: configure-git
+  when: configure_git == True

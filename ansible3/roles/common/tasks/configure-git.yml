@@ -1,0 +1,9 @@
+---
+  - name: Configure git
+    command: /usr/bin/git config --global {{ item.key }} "{{ item.value }}"
+    become: yes
+    become_user: "{{ user.name }}"
+    with_items:
+      - { key: 'user.name', value: '{{ user.name }}'}
+      - { key: 'user.email', value: '{{ user.name }}@{{ ansible_hostname }}'}
+      - { key: 'color.ui', value: 'true'}
