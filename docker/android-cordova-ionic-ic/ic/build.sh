@@ -62,6 +62,9 @@ main() {
 
     ensureMandatoryDirectories
 
+    # Prepare node modules
+    npm install
+    
     # Display information about current installation
     ionic info
 
