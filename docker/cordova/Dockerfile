@@ -1,4 +1,4 @@
-FROM bwnyasse/node:6.x
+FROM bwnyasse/node:7.x
 
 MAINTAINER bwnyasse
 
