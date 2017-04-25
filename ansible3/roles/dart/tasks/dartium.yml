@@ -1,0 +1,12 @@
+---
+- name: Create Dartium directory
+  become: yes
+  file: path={{dartium_path}} state=directory
+
+- name: Download Dartium
+  become: yes
+  get_url: url={{dartium_url}} dest={{dartium_path}}/{{dartium_archive_name}}.zip mode=0644
+
+- name: Unarchive Dartium archive
+  become: yes
+  unarchive: src={{dartium_path}}/{{dartium_archive_name}}.zip dest={{dartium_path}} copy=no

@@ -1,0 +1,27 @@
+---
+- name: Enable HTTPS for apt
+  apt: 
+    name: "{{item}}"
+    state: installed
+  with_items:
+    - apt-transport-https
+
+- name: Setup Dart stable repository
+  script: dart_setup.sh
+
+- name: Install Dart SDK
+  become: yes
+  apt: 
+    name: "{{item}}"
+    state: present
+  with_items:
+    - "{{dart_package}}"
+
+- name: Add dart and tools to PATH
+  become: yes
+  template: 
+    src: dart.sh.j2 
+    dest: /etc/profile.d/dart.sh 
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0644
