@@ -15,5 +15,4 @@ docker_yum_repo_version: 'main' # 'testing', 'beta', 'nightly'
 
 docker_group: docker
 
-add_user_to_docker_group: true
 update_docker_package: yes

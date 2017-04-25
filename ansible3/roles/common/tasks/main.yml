@@ -45,6 +45,26 @@
     generate_ssh_key: yes
     shell: /bin/zsh
 
+- name: Make sure we have a 'wheel' group
+  group:
+    name: wheel
+    state: present
+
+- name: Allow 'wheel' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+
+- name: Add sudoers users to wheel group
+  user: 
+    name: "{{ user.name }}" 
+    groups: wheel 
+    append: yes 
+    state: present 
+    createhome: yes
+
 - name: Set correct permissions to home directory
   file:
      path: "{{ user.home }}"
