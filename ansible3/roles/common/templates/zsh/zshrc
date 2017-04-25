@@ -35,3 +35,4 @@ grepcode_f() {
 [[ -f ~/.alias ]] && source ~/.alias || true
 [[ -f ~/.proxy ]] && source ~/.proxy || true
 [[ -f ~/.motd ]] && source ~/.motd || true
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh || true

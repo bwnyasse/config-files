@@ -1,0 +1,33 @@
+---
+
+- assert: { that: "user.home != ''" }
+
+- name: Checkout fzf from git repo
+  git: 
+    repo: https://github.com/junegunn/fzf.git
+    dest: "{{ user.home }}/.fzf"
+    update: yes
+    force: yes
+  become: yes
+  become_user: "{{ user.name }}"
+
+- name: Install fzf
+  command: "./install"
+  args:
+    chdir: "{{ user.home }}/.fzf"
+
+- name: override fzf bash to ensure used of user.home dir
+  template: 
+    src: .fzf.bash 
+    dest: "{{ user.home }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0644
+
+- name: override fzf zsh to ensure used of user.home dir
+  template: 
+    src: .fzf.zsh 
+    dest: "{{ user.home }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0644
