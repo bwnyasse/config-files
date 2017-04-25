@@ -9,6 +9,10 @@
 #
 # ################################################
 
+- name: Install ZSH
+  package: name=zsh state=present
+  become: yes
+
 - name: Set default shell to zsh
   user:
     name: "{{ user.name }}"
