@@ -15,3 +15,4 @@
     - { role: common, tags: common }
     - { role: docker, tags: docker , docker_options: "-H tcp://0.0.0.0:2375" }
     - { role: fzf, tags: fzf }
+    - { role: java, tags: java }
