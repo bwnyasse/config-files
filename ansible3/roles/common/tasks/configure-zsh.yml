@@ -37,6 +37,14 @@
     dest: "{{ user.home }}/.oh-my-zsh/themes/pure.zsh-theme"
     mode: 0644
 
+- name: Set common .alias
+  template:
+    src: zsh/alias
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    dest: "{{ user.home }}/.alias"
+    mode: 0644
+
 - name: Set common .zshrc
   template:
     src: zsh/zshrc
@@ -44,6 +52,8 @@
     group: "{{ user.name }}"
     dest: "{{ user.home }}/.zshrc"
     mode: 0644
+
+
 
 - name: Chown to "{{ user.name }}"
   file:

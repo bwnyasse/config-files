@@ -1,0 +1,45 @@
+alias h='history'
+alias c='clear'
+
+
+## ------
+## GIT 
+##
+
+alias gs='git status'
+alias gst='git status'
+alias gpr='git pull --rebase'
+alias grrh='git reset --hard HEAD'
+alias gcdf='git clean -df'
+alias gcam='git commit --amend'
+alias gri=git_rebase_interactif_f
+alias gspp='git stash && git pull --rebase && git stash pop'
+alias gco='git checkout'
+alias gbr='git branch'
+alias gl='git lg'
+
+## -------
+## DOCKER
+##
+
+alias d='docker'
+alias dc='docker-compose'
+alias dm='docker-machine'
+alias dprune='docker system prune'
+alias ddf='docker system df'
+
+
+## -------
+## MAVEN
+##
+
+alias install='mvn clean source:jar  install'
+alias installD='mvn clean source:jar  install -DskipTests'
+
+## -------
+## some more ls aliases
+##
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
