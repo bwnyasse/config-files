@@ -1,0 +1,10 @@
+## ----
+## DART
+
+DART_BIN="/usr/lib/dart/bin"
+export PATH=$PATH:$DART_BIN
+
+## ----
+## PUB DART
+PUB_CACHE="{{ user.home }}/.pub-cache/bin"
+export PATH=$PATH:$PUB_CACHE
