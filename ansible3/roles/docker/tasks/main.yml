@@ -27,6 +27,7 @@
   when: docker_install_compose
 
 - name: Create docker systemd service override directory
+  become: yes
   file:
     path: /etc/systemd/system/docker.service.d/
     state: directory

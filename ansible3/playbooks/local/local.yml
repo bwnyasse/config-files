@@ -1,4 +1,4 @@
-- hosts: vps
+- hosts: local-xubuntu
   vars:
     user:
       name: bwnyasse

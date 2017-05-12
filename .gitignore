@@ -3,3 +3,5 @@
 
 #Ansible Retry
 *.retry
+
+logs/

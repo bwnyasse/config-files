@@ -20,6 +20,7 @@
   when: add_repository_key|failed
 
 - name: Add Docker repository and update apt cache
+  become: yes
   apt_repository:
     repo: "{{ docker_apt_repository }}"
     mode: '644'
