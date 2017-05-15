@@ -8,3 +8,8 @@ export PATH=$PATH:$DART_BIN
 ## PUB DART
 PUB_CACHE="{{ user.home }}/.pub-cache/bin"
 export PATH=$PATH:$PUB_CACHE
+
+## ---
+## MAVEN 
+M2_HOME=/opt/apache-maven-3.5.0
+export PATH=$PATH:$M2_HOME/bin

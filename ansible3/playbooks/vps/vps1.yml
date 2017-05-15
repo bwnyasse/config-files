@@ -12,8 +12,9 @@
     - ../../group_vars/all
 
   roles:
-  #  - { role: common, tags: common }
+    - { role: common, tags: common }
     - { role: docker, tags: docker , docker_options: "-H tcp://0.0.0.0:2375" }
-  #  - { role: fzf, tags: fzf }
-  #  - { role: java, tags: java }
-  #  - { role: dart, tags: dart }
+    - { role: fzf, tags: fzf }
+    - { role: java, tags: java }
+    - { role: dart, tags: dart }
+    - { role: maven, tags: maven }
