@@ -9,11 +9,11 @@ DART_BIN="/usr/lib/dart/bin"
 export PATH=$PATH:$DART_BIN
 
 # PUB DART
-PUB_CACHE="/home/bwnyasse/.pub-cache/bin"
+PUB_CACHE="$HOME/.pub-cache/bin"
 export PATH=$PATH:$PUB_CACHE
 
 #FLUTTER
-FLUTTER_DIR_BIN="/home/bwnyasse/work/project/opensource/flutter/bin"
+FLUTTER_DIR_BIN="$HOME/work/project/opensource/flutter/bin"
 export PATH=$PATH:$FLUTTER_DIR_BIN
 
 export VISUAL=vim
@@ -24,19 +24,19 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 #export PATH=$PATH:/opt/google/dart/dart-sdk-1.12.2.0/bin
 
 #ANDROID CORDOVA
-export ANDROID_HOME=/home/bwnyasse/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platforms-tools
 
 
 # Wicanplay Docker Env Variable
-export WICANPLAY_DOCKER_DB_BACKUP_DIR=/home/bwnyasse/work/project/wicanplay/mysql/data
-export WICANPLAY_DOCKER_DEPLOYMENT_DIR=/home/bwnyasse/work/wildfly/docker-deployments
+export WICANPLAY_DOCKER_DB_BACKUP_DIR=$HOME/work/project/wicanplay/mysql/data
+export WICANPLAY_DOCKER_DEPLOYMENT_DIR=$HOME/work/wildfly/docker-deployments
 
 #Sootoop Docker Env Var
-export SOOTOOP_DOCKER_DEPLOYEMENT_DIR=/home/bwnyasse/work/tomcat/apache-tomcat-9.0.0.M6/webapps/ROOT/
-export SOOTOOP_DOCKER_DB_DATA_DIR=/home/bwnyasse/work/project/sootoop/mongo/data/
-export SOOTOOP_DOCKER_DB_BACKUP_DIR=/home/bwnyasse/work/project/sootoop/mongo/backup/
-export SOOTOOP_DOCKER_NGINX_CONF_FILE=/home/bwnyasse/work/project/sootoop/volumes/lb/default.conf
+export SOOTOOP_DOCKER_DEPLOYEMENT_DIR=$HOME/work/tomcat/apache-tomcat-9.0.0.M6/webapps/ROOT/
+export SOOTOOP_DOCKER_DB_DATA_DIR=$HOME/work/project/sootoop/mongo/data/
+export SOOTOOP_DOCKER_DB_BACKUP_DIR=$HOME/work/project/sootoop/mongo/backup/
+export SOOTOOP_DOCKER_NGINX_CONF_FILE=$HOME/work/project/sootoop/volumes/lb/default.conf
 
 ### Functions ----------------------------------------------------------------------------
 # Method to put ssh-key to a host server
