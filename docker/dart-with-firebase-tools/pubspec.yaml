@@ -4,10 +4,14 @@ environment:
   sdk: '>=1.23.0 <2.0.0'
 
 dependencies:
-  angular2: ^3.0.0'
+  angular2: "3.0.0"
   firebase: "^3.0.0"
   js: '^0.6.1'
   google_maps: ">=3.0.0 <4.0.0"
+  func: '^0.1.0'
+  mdown: "^0.12.0+2"
+  validator: ">=0.0.4 <0.1.0"
+  bson_objectid: "^0.1.0"
   quiver: any
 
 dev_dependencies:
