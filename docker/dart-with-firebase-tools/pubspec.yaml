@@ -1,0 +1,15 @@
+name: tmp_pub_getter
+
+environment:
+  sdk: '>=1.23.0 <2.0.0'
+
+dependencies:
+  angular2: ^3.0.0'
+  firebase: "^3.0.0"
+  js: '^0.6.1'
+  google_maps: ">=3.0.0 <4.0.0"
+  quiver: any
+
+dev_dependencies:
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
