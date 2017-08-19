@@ -1,6 +1,7 @@
 [vps]
-vps311007.ovh.net
-#192.168.33.10
+#vmi92598.contabo.host
+#vps311007.ovh.net
+192.168.33.10
 
 [local-xubuntu]
 localhost ansible_connection=local

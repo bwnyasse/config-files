@@ -46,11 +46,13 @@
     shell: /bin/zsh
 
 - name: Make sure we have a 'wheel' group
+  become: yes
   group:
     name: wheel
     state: present
 
 - name: Allow 'wheel' group to have passwordless sudo
+  become: yes
   lineinfile:
     dest: /etc/sudoers
     state: present
@@ -58,6 +60,7 @@
     line: '%wheel ALL=(ALL) NOPASSWD: ALL'
 
 - name: Add sudoers users to wheel group
+  become: yes
   user: 
     name: "{{ user.name }}" 
     groups: wheel 
@@ -66,6 +69,7 @@
     createhome: yes
 
 - name: Set correct permissions to home directory
+  become: yes
   file:
      path: "{{ user.home }}"
      owner: "{{ user.name }}"
