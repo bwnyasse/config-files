@@ -4,7 +4,7 @@ alias gopro='cd /home/bwnyasse/work/project/'
 alias oloodi='cd /home/bwnyasse/work/project/oloodi'
 
 ## ------
-## GIT 
+## GIT
 ##
 
 alias gs='git status'
@@ -17,7 +17,9 @@ alias gri=git_rebase_interactif_f
 alias gspp='git stash && git pull --rebase && git stash pop'
 alias gco='git checkout'
 alias gbr='git branch'
-alias gl='git lg'
+alias gl='git log --pretty=oneline --abbrev-commit'
+alias gf='git fetch --tags'
+
 
 ## -------
 ## DOCKER
