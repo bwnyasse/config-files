@@ -31,10 +31,10 @@
 
 - name: Set common zsh theme
   copy:
-    src: zsh/pure.zsh-theme
+    src: zsh/spaceship.zsh-theme
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
-    dest: "{{ user.home }}/.oh-my-zsh/themes/pure.zsh-theme"
+    dest: "{{ user.home }}/.oh-my-zsh/themes/spaceship.zsh-theme"
     mode: 0644
 
 - name: Set common .alias
