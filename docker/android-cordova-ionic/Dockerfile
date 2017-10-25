@@ -15,7 +15,6 @@ RUN apt-get update && \
     npm install -g -y typescript@"$TYPESCRIPT_VERSION" && \
     npm install -g -y gulp && \
     npm install -g cordova && \
-    npm cache clear && \
-    gem install sass 
-
+    npm cache clear
+    
 CMD ["/bin/bash"]
