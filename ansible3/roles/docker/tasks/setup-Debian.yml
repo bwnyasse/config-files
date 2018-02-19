@@ -7,18 +7,14 @@
     - apt-transport-https
     - ca-certificates
 
-- name: Add Docker repository key
+- name: Add Docker apt key.
   apt_key:
-    id: 58118E89F3A912897C070ADBF76221572C52609D
-    keyserver: https://apt.dockerproject.org/gpg
+    url: https://download.docker.com/linux/ubuntu/gpg
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
     state: present
   register: add_repository_key
   ignore_errors: true
-
-- name: Alternative | Add Docker repository key
-  shell: "curl -sSL https://apt.dockerproject.org/gpg | sudo apt-key add -"
-  when: add_repository_key|failed
-
+  
 - name: Add Docker repository and update apt cache
   become: yes
   apt_repository:
