@@ -1,10 +1,13 @@
 ---
 
-docker_package: docker-engine
+docker_edition: 'ce'
+docker_package: "docker-{{ docker_edition }}"
+docker_package_state: present
 
 # Docker Compose options.
 docker_install_compose: true
-docker_compose_version: "1.11.2"
+docker_compose_version: "1.16.1"
+docker_compose_path: /usr/local/bin/docker-compose
 docker_apt_cache_valid_time: 600
 
 # Used only for Debian/Ubuntu. Add 'testing' if you don't want stable.

@@ -14,7 +14,7 @@
     state: present
   register: add_repository_key
   ignore_errors: true
-  
+
 - name: Add Docker repository and update apt cache
   become: yes
   apt_repository:
